@@ -1,0 +1,9 @@
+[submodule "cJSON"]
+	path = cJSON
+	url = https://github.com/DaveGamble/cJSON
+[submodule "clown68000"]
+	path = clown68000
+	url = https://github.com/Clownacy/clown68000
+[submodule "libdeflate"]
+	path = libdeflate
+	url = https://github.com/ebiggers/libdeflate
