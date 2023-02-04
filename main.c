@@ -4,13 +4,13 @@
 #include <string.h>
 
 #include "clown68000/clowncommon/clowncommon.h"
-#include "clown68000/m68k.h"
+#include "clown68000/clown68000.h"
 #include "cJSON/cJSON.h"
 #include "libdeflate/libdeflate.h"
 
 /*#define OUTPUT_STUFF*/
 
-static M68k_State m68k;
+static Clown68000_State m68k;
 static cc_u8l ram[0x1000000];
 static char decompression_buffer[16 * 1024 * 1024];
 
@@ -244,7 +244,7 @@ int main(const int argc, char** const argv)
 	}
 	else
 	{
-		M68k_SetErrorCallback(ErrorCallback);
+		Clown68000_SetErrorCallback(ErrorCallback);
 
 		for (file_index = 0; file_index < CC_COUNT_OF(files); ++file_index)
 		{
@@ -296,7 +296,7 @@ int main(const int argc, char** const argv)
 							char reg[3];
 							const cJSON *array_item;
 
-							static const M68k_ReadWriteCallbacks callbacks = {ReadCallback, WriteCallback, NULL};
+							static const Clown68000_ReadWriteCallbacks callbacks = {ReadCallback, WriteCallback, NULL};
 
 							const cJSON* const array_member = cJSON_GetArrayItem(json, array_index);
 							const cJSON* const initial = cJSON_GetObjectItemCaseSensitive(array_member, "initial");
@@ -362,7 +362,7 @@ int main(const int argc, char** const argv)
 							uses_memory = 0;
 						#endif
 
-							M68k_DoCycle(&m68k, &callbacks);
+							Clown68000_DoCycle(&m68k, &callbacks);
 
 						#ifdef OUTPUT_STUFF
 							if (uses_memory <= 1)
