@@ -275,6 +275,7 @@ int main(const int argc, char** const argv)
 					{
 						int array_index;
 
+						static const Clown68000_ReadWriteCallbacks callbacks = {ReadCallback, WriteCallback, NULL};
 						const int array_size = cJSON_GetArraySize(json);
 
 					#ifdef OUTPUT_STUFF
@@ -290,13 +291,13 @@ int main(const int argc, char** const argv)
 						final_file = fopen(path_buffer, "w");
 					#endif
 
+						Clown68000_Reset(&m68k, &callbacks);
+
 						for (array_index = 0; array_index < array_size; ++array_index)
 						{
 							unsigned int i;
 							char reg[3];
 							const cJSON *array_item;
-
-							static const Clown68000_ReadWriteCallbacks callbacks = {ReadCallback, WriteCallback, NULL};
 
 							const cJSON* const array_member = cJSON_GetArrayItem(json, array_index);
 							const cJSON* const initial = cJSON_GetObjectItemCaseSensitive(array_member, "initial");
