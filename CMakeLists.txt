@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.6)
 
 project(clown68000-validator LANGUAGES C)
 
@@ -7,6 +7,8 @@ add_executable(clown68000-validator
 	"cJSON/cJSON.c"
 	"cJSON/cJSON.h"
 )
+
+set(VS_STARTUP_PROJECT clown68000-validator)
 
 add_subdirectory("clown68000" EXCLUDE_FROM_ALL)
 target_link_libraries(clown68000-validator clown68000)
