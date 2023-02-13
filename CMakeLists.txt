@@ -8,7 +8,7 @@ add_executable(clown68000-validator
 	"cJSON/cJSON.h"
 )
 
-set(VS_STARTUP_PROJECT clown68000-validator)
+set_property(DIRECTORY . PROPERTY VS_STARTUP_PROJECT clown68000-validator)
 
 add_subdirectory("clown68000" EXCLUDE_FROM_ALL)
 target_link_libraries(clown68000-validator clown68000)
