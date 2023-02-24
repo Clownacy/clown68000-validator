@@ -105,17 +105,15 @@ int main(const int argc, char** const argv)
 
 	static const char* const files[] = {
 		/* Not working. */
-/*		"ABCD.b.json.gz",
-		"ASR.b.json.gz",
+/*		"ASR.b.json.gz",
 		"ASR.l.json.gz",
 		"ASR.w.json.gz",
 		"CHK.json.gz",
 		"DIVU.json.gz",
-		"NBCD.json.gz",
 		"RESET.json.gz",
-		"SBCD.json.gz",
 */
 		/* Working. */
+		"ABCD.json.gz",
 		"ADD.b.json.gz",
 		"ADD.l.json.gz",
 		"ADD.w.json.gz",
@@ -183,6 +181,7 @@ int main(const int argc, char** const argv)
 		"MOVEtoUSP.json.gz",
 		"MULS.json.gz",
 		"MULU.json.gz",
+		"NBCD.json.gz",
 		"NEG.b.json.gz",
 		"NEG.l.json.gz",
 		"NEG.w.json.gz",
@@ -214,6 +213,7 @@ int main(const int argc, char** const argv)
 		"RTE.json.gz",
 		"RTR.json.gz",
 		"RTS.json.gz",
+		"SBCD.json.gz",
 		"Scc.json.gz",
 		"SUB.b.json.gz",
 		"SUB.l.json.gz",
