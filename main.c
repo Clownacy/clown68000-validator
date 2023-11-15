@@ -25,7 +25,7 @@ static void ErrorCallback(const char *format, va_list arg)
 	fflush(stderr);
 }
 
-static cc_u16f ReadCallback(const void* const user_data, const cc_u32f address, const cc_bool do_high_byte, const cc_bool do_low_byte)
+static cc_u16f ReadCallback(const void* const user_data, const cc_u32f word_address, const cc_bool do_high_byte, const cc_bool do_low_byte)
 {
 	cc_u16f value;
 
@@ -38,15 +38,15 @@ static cc_u16f ReadCallback(const void* const user_data, const cc_u32f address, 
 	value = 0;
 
 	if (do_high_byte)
-		value |= ram[address + 0] << 8;
+		value |= ram[word_address * 2 + 0] << 8;
 
 	if (do_low_byte)
-		value |= ram[address + 1] << 0;
+		value |= ram[word_address * 2 + 1] << 0;
 
 	return value;
 }
 
-static void WriteCallback(const void* const user_data, const cc_u32f address, const cc_bool do_high_byte, const cc_bool do_low_byte, const cc_u16f value)
+static void WriteCallback(const void* const user_data, const cc_u32f word_address, const cc_bool do_high_byte, const cc_bool do_low_byte, const cc_u16f value)
 {
 	(void)user_data;
 
@@ -55,10 +55,10 @@ static void WriteCallback(const void* const user_data, const cc_u32f address, co
 #endif
 
 	if (do_high_byte)
-		ram[address + 0] = value >> 8;
+		ram[word_address * 2 + 0] = value >> 8;
 
 	if (do_low_byte)
-		ram[address + 1] = value & 0xFF;
+		ram[word_address * 2 + 1] = value & 0xFF;
 }
 
 static cc_bool LoadFile(const char* const file_path, void** const file_buffer, size_t* const file_size)
