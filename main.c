@@ -106,12 +106,14 @@ int main(const int argc, char** const argv)
 	size_t file_size;
 
 	static const char* const files[] = {
-		/* Not working. */
+		/* These test are broken. */
+		/* https://github.com/TomHarte/ProcessorTests/issues/21 */
 /*		"ASR.b.json.gz",
 		"ASR.l.json.gz",
 		"ASR.w.json.gz",
-		"CHK.json.gz",
-		"DIVU.json.gz",
+*/
+		/* These don't work because the interpreter does not support them. */
+/*		"CHK.json.gz",
 		"RESET.json.gz",
 */
 		/* Working. */
@@ -148,6 +150,7 @@ int main(const int argc, char** const argv)
 		"CMPA.w.json.gz",
 		"DBcc.json.gz",
 		"DIVS.json.gz",
+		"DIVU.json.gz",
 		"EOR.b.json.gz",
 		"EOR.l.json.gz",
 		"EOR.w.json.gz",
