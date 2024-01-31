@@ -111,10 +111,10 @@ int main(const int argc, char** const argv)
 /*		"ASR.b.json.gz",
 		"ASR.l.json.gz",
 		"ASR.w.json.gz",
+		"CHK.json.gz",
 */
 		/* These don't work because the interpreter does not support them. */
-/*		"CHK.json.gz",
-		"RESET.json.gz",
+/*		"RESET.json.gz",
 */
 		/* Working. */
 		"ABCD.json.gz",
