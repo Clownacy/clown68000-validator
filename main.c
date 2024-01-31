@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "clown68000/clowncommon/clowncommon.h"
-#include "clown68000/clown68000.h"
+#include "clown68000/common/clowncommon/clowncommon.h"
+#include "clown68000/interpreter/clown68000.h"
 #include "cJSON/cJSON.h"
 #include "libdeflate/libdeflate.h"
 
@@ -18,8 +18,10 @@ static char decompression_buffer[16 * 1024 * 1024];
 static unsigned int uses_memory;
 #endif
 
-static void ErrorCallback(const char *format, va_list arg)
+static void ErrorCallback(void *user_data, const char *format, va_list arg)
 {
+	(void)user_data;
+
 	vfprintf(stderr, format, arg);
 	fputc('\n', stderr);
 	fflush(stderr);
@@ -244,7 +246,7 @@ int main(const int argc, char** const argv)
 	}
 	else
 	{
-		Clown68000_SetErrorCallback(ErrorCallback);
+		Clown68000_SetErrorCallback(ErrorCallback, NULL);
 
 		for (file_index = 0; file_index < CC_COUNT_OF(files); ++file_index)
 		{

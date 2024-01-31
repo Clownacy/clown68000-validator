@@ -11,7 +11,7 @@ add_executable(clown68000-validator
 set_property(DIRECTORY . PROPERTY VS_STARTUP_PROJECT clown68000-validator)
 
 add_subdirectory("clown68000" EXCLUDE_FROM_ALL)
-target_link_libraries(clown68000-validator clown68000)
+target_link_libraries(clown68000-validator clown68000-interpreter)
 
 set(LIBDEFLATE_BUILD_STATIC_LIB ON CACHE INTERNAL "" FORCE)
 set(LIBDEFLATE_BUILD_SHARED_LIB OFF CACHE INTERNAL "" FORCE)
